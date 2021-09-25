@@ -42,5 +42,17 @@ class Solution:
                 
         return [lines, total]   
 
+# using ord() is a faster solution 
+# Python ord() function returns the Unicode code from a given character. This function accepts a string of unit length as an argument and returns the Unicode
+    def numberOfLines(self, widths: List[int], s: str) -> List[int]:
+        lc=1
+        tot=0
+        for i in s:
+            tot+=widths[ord(i)-97]
+            if (tot>100):
+                tot=widths[ord(i)-97]
+                lc+=1
+        return [lc,tot]
+
 test = Solution()
-print(test.numberOfLines( widths = [4,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10], s = "bbbcccdddaaa"))
+print(test.numberOfLines(widths = [4,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10], s = "bbbcccdddaaa"))
